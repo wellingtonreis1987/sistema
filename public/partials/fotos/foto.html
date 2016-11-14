@@ -1,0 +1,85 @@
+<!-- Navigation Bar-->
+<header id="topnav">
+    <top-bar></top-bar>
+    <menu-navegation></menu-navegation>
+</header>
+<!-- End Navigation Bar-->
+<div class="wrapper">
+    <div class="container">
+        <div class="card-box">
+            <div class="page-header text-center">
+                <h1>{{foto.titulo}}</h1>
+            </div>
+
+            <div ng-show="mensagem.length" class="alert alert-info">
+                {{mensagem}}
+            </div>
+
+            <form novalidate name="formulario" class="row" ng-submit="submeter()">
+                <fieldset class="form-group">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input name="titulo" class="form-control form-control-lg m-b-20"
+                                   ng-model="foto.titulo" required
+                                   ng-maxlength="20">
+                            <span ng-show="formulario.$submitted && formulario.titulo.$error.required"
+                                  class="form-control alert-danger">
+                                Título obrigatório
+                            </span>
+                            <span ng-show="formulario.$submitted && formulario.titulo.$error.maxlength"
+                                  class="form-control alert-danger">
+                                No máximo 20 caracteres!
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>URL</label>
+                            <input name="url" class="form-control form-control-lg m-b-20"
+                                   ng-model="foto.url" required>
+
+                            <span ng-show="formulario.$submitted && formulario.url.$error.required"
+                                  class="form-control alert-danger">
+                                URL obrigatória
+                            </span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea name="descricao" class="form-control form-control-lg m-b-20" ng-model="foto.descricao">
+                            </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Grupo</label>
+                            <select name="grupo" class="form-control form-control-lg m-b-20" required
+                                    ng-controller="GruposController"
+                                    ng-model="foto.grupo._id"
+                                    ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+                                <option value="">Escolha um grupo</option>
+                            </select>
+                            <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
+                                Grupo obrigatório
+                            </span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">
+                            Salvar
+                        </button>
+                        <a href="/fotos" meu-focus class="btn btn-secondary">Voltar</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card card-block">
+                            <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer text-right">
+            <footer-bar></footer-bar>
+        </footer>
+        <!-- End Footer -->
+    </div>
+</div> <!-- End wrapper -->

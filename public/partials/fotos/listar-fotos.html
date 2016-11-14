@@ -1,0 +1,56 @@
+<!-- Navigation Bar-->
+<header id="topnav">
+    <top-bar></top-bar>
+    <menu-navegation></menu-navegation>
+</header>
+<!-- End Navigation Bar-->
+<div class="wrapper">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="input-group-btn">
+                    <div class="btn-group pull-right m-t-15">
+                        <a href="/" class="btn btn-secondary">Voltar</a>
+                    </div>
+                    <div class="btn-group pull-right m-t-15">
+                        <a href="/fotos/new" class="btn btn-primary">Cadastrar</a>
+                    </div>
+                    <h4 class="page-title">Fotos</h4>
+                </span>
+            </div>
+        </div>
+
+        <div class="card-box">
+            <div ng-show="mensagem.length" class="alert alert-info">
+                {{mensagem}}
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="table-responsive">
+                        <table ng-table="tableParams" class="table table-bordered table-hover table-striped" show-filter="true">
+                            <tr ng-repeat="foto in $data">
+                                <td data-title="'Título'" filter="{ titulo: 'text'}">
+                                    {{foto.titulo}}
+                                </td>
+                                <td data-title="'Url'" filter="{ url: 'text'}" >
+                                    {{foto.url}}
+                                </td>
+                                <td>
+                                    <button-action edit="/fotos/edit/{{foto._id}}" view="/fotos/view/{{foto._id}}" remove="remover(foto)"></button-action>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer text-right">
+            <footer-bar></footer-bar>
+        </footer>
+        <!-- End Footer -->
+    </div>
+</div> <!-- End wrapper -->

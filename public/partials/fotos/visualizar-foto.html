@@ -1,0 +1,30 @@
+<!-- Navigation Bar-->
+<header id="topnav">
+    <top-bar></top-bar>
+    <menu-navegation></menu-navegation>
+</header>
+<!-- End Navigation Bar-->
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <h3 class="card-title">{{foto.titulo}}</h3>
+                    <p class="card-text">{{foto.descricao}}</p>
+                    <small class="text-muted">{{foto.grupo.nome}}</small>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card card-block">
+                        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer text-right">
+            <footer-bar></footer-bar>
+        </footer>
+        <!-- End Footer -->
+    </div>
+</div> <!-- End wrapper -->
